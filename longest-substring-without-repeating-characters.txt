@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        std::string longest = "";
+        int i = 0 , j = 0;
+        
+        while(i < s.length()){
+            j = i ;
+            std::string current = "" ;
+            while(current.find(s[j]) == std::string::npos && j < s.length() ){
+                current += s[j];
+                j++;
+            }
+            if( current.length() > longest.length() ) { longest = current; }
+            i++;
+        }
+        
+        return longest.length();
+    }
+};
