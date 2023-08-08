@@ -1,0 +1,31 @@
+def ZigZagConv(input,rows):
+    List = []
+    Gap = 2*(rows-1)
+    List.append(Gap)
+    ZZ_Value = ""
+    sub = 2
+    
+    while (Gap - sub) > 0:
+        List.append((Gap-sub,sub))
+        sub += 2
+    List.append(Gap)
+    
+    for i in range(len(List)):
+        j = i
+        if i == 0 or i == len(List)-1:
+            while j < len(input):
+                ZZ_Value += input[j]
+                j += List[i]
+        else:
+            shift = 1
+            while j < len(input):
+                ZZ_Value += input[j]
+                shift = 0 if shift == 1 else 1
+                print(shift)
+                if shift == 1:
+                    j += List[i][1]
+                else:
+                    j += List[i][0]
+    print(ZZ_Value)
+    
+ZigZagConv("PAYPALISHIRING",5)

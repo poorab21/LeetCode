@@ -1,0 +1,21 @@
+class Solution(object):
+    def reverse(self, x):
+        negative = 0
+        reverse = 0
+        sub = 0
+        
+        if x > 0: sub = x
+        elif x < 0: sub = x - (x*2)
+        
+        while sub > 0:
+            remainder = int(sub % 10)
+            negative *= 10
+            reverse = int(reverse*10) + remainder
+            sub = int(sub/10)
+
+        
+        
+        if x < 0: reverse -= reverse * 2
+        if reverse < -2147483648 or reverse > 2147483647: return 0
+        
+        return reverse
